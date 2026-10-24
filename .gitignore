@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+# calibration files are per session, cables and sweep (docs/MEASUREMENT.md)
+*.npz
