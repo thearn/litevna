@@ -32,4 +32,4 @@ mode = "gate"
 typecheck = "absolute"
 package = "src/litevna"
 python = "~/.venvs/litevna/bin/python"
-absolute = ["function_size", "function_complexity", "function_parameters", "module_size", "duplicate", "pass_through", "noqa"]
+absolute = ["function_size", "function_complexity", "function_parameters", "function_any", "module_size", "duplicate", "pass_through", "noqa"]
