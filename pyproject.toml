@@ -17,3 +17,18 @@ litevna = "litevna.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+# src first: a worktree's tests import its own code ahead of the editable install's (which names the main checkout)
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.structure]
+package = "src/litevna"
+mode = "gate"
+
+# The landing gate (lib/git-hooks: git land, quality/gate.py): main moves only through git land; every rule absolute
+[tool.quality]
+package = "src/litevna"
+python = "~/.venvs/litevna/bin/python"
+absolute = ["function_size", "function_complexity", "module_size", "duplicate", "pass_through", "noqa"]
