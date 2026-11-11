@@ -29,7 +29,7 @@ mode = "gate"
 
 # The landing gate (lib/git-hooks: git land, quality/gate.py): main moves only through git land; every rule absolute
 [tool.quality]
-typecheck = "delta"
+typecheck = "absolute"
 package = "src/litevna"
 python = "~/.venvs/litevna/bin/python"
-absolute = ["function_size", "function_complexity", "module_size", "duplicate", "pass_through", "noqa"]
+absolute = ["function_size", "function_complexity", "function_parameters", "module_size", "duplicate", "pass_through", "noqa"]

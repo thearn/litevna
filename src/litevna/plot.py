@@ -19,8 +19,11 @@ def plot_captures(directory: Path, *, reference: Path | None = None, target_hz: 
     lo, hi = np.inf, 0.
     if reference:
         ref = np.genfromtxt(reference, delimiter=',', names=True)
-        fcol = ref.dtype.names[0]; fr = ref[fcol] * (1e9 if fcol.endswith('_ghz') else 1.)
-        for col in ref.dtype.names[1:]:
+        names = ref.dtype.names
+        if not names:
+            raise ValueError(f'{reference}: the reference CSV needs a header row (frequency column first)')
+        fcol = names[0]; fr = ref[fcol] * (1e9 if fcol.endswith('_ghz') else 1.)
+        for col in names[1:]:
             ax[0].plot(fr / 1e9, ref[col], lw=1, alpha=.5, label=f'reference {col}')
     for table in sorted(directory.glob('*.csv')):
         d = np.genfromtxt(table, delimiter=',', names=True)
